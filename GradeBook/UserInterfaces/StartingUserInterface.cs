@@ -33,22 +33,22 @@ namespace GradeBook.UserInterfaces
         public static void CreateCommand(string command)
         {
             var parts = command.Split(' ');
-            if (parts.Length != 3)
+            if (parts.Length != 4)
             {
-                Console.WriteLine("Command not valid, Create requires a name and type of gradebook.");
+                Console.WriteLine("Command not valid, Create requires a name, type of gradebook, if it's weighted (true / false).");
                 return;
             }
 
             var name = parts[1];
             BaseGradeBook gradeBook;// = new BaseGradeBook(name);
-
+            bool obj;
             if (parts[2] == Enums.GradeBookType.Standard.ToString())
             {
-                gradeBook = new StandardGradeBook(name);
+                gradeBook = new StandardGradeBook(name, Boolean.TryParse(parts[3], out obj));
             }
             else if (parts[2] == Enums.GradeBookType.Ranked.ToString())
             {
-                gradeBook = new RankedGradeBook(name);
+                gradeBook = new RankedGradeBook(name, Boolean.TryParse(parts[3], out obj));
             }
             else
             {
