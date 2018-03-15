@@ -22,8 +22,9 @@ namespace GradeBook.GradeBooks
                 return 'B';
             else if (averageGrade < 75 && averageGrade >= 50)
                 return 'C';
-            else if (averageGrade < 50)
+            else if (averageGrade < 50 && averageGrade >= 25)
                 return 'D';
+
             return 'F';
         }
     }
